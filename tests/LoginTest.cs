@@ -1,21 +1,28 @@
 using System;
 using Xunit;
+using Xunit.Abstractions;
 using OpenQA.Selenium;
 using tests.utils;
 using tests.pages;
-using SeleniumExtras.PageObjects;
 
 namespace tests
 {
     [Collection("Test Collection #1")]
     public class LoginTest:IDisposable
     {
-        private WebDriver driver;
+        private readonly ITestOutputHelper outputHelper;
+        private readonly WebDriver driver;
 
-        public LoginTest()
+        public LoginTest(ITestOutputHelper outputHelper)
         {
+            this.outputHelper = outputHelper;
             this.driver = Utility.CreateWebDriver();
             driver.Url = TopPage.BaseURL;
+        }
+
+        public void Dispose()
+        {
+            this.driver.Quit();
         }
 
         [Fact]
@@ -23,11 +30,8 @@ namespace tests
         {
             var toppage = new TopPage(this.driver);
             var loginpage = toppage.GoLoginPage();
-        }
-
-        public void Dispose()
-        {
-            this.driver.Quit();
+            var myPage = loginpage.DoLogin("ichiro@example.com", "password");
+            Assert.Equal("マイページ", myPage.GetHeaderText()) ;
         }
     }
 }

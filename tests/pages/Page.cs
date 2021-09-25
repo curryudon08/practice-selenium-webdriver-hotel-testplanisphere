@@ -5,7 +5,7 @@ namespace tests.pages
 {
     abstract public class Page
     {
-        protected WebDriver driver;
+        protected readonly WebDriver driver;
 
         public Page(WebDriver driver)
         {

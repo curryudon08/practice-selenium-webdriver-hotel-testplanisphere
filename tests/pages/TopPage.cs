@@ -25,15 +25,15 @@ namespace tests.pages
             PageFactory.InitElements(this.driver,this);
         }
 
+        override protected bool AtPage()
+        {
+            return  this.driver.Title.Equals("HOTEL PLANISPHERE - テスト自動化練習サイト");
+        }
+
         public LoginPage GoLoginPage()
         {
             this.loginLink.Click();
             return new LoginPage(this.driver);
-        }
-
-        override protected bool AtPage()
-        {
-            return  this.driver.Title.Equals("HOTEL PLANISPHERE - テスト自動化練習サイト");
         }
     }
 }

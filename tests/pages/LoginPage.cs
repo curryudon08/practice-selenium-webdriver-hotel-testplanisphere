@@ -15,6 +15,12 @@ namespace tests.pages
         [FindsBy(How = How.Id, Using = "login-button")]
         private readonly IWebElement submitButton;
 
+        [FindsBy(How = How.Id, Using = "email-message")]
+        private readonly IWebElement emailMessage;
+
+        [FindsBy(How = How.Id, Using = "password-message")]
+        private readonly IWebElement passwordMessage;
+
         public LoginPage(WebDriver driver) : base(driver)
         {
             PageFactory.InitElements(this.driver,this);
@@ -48,6 +54,16 @@ namespace tests.pages
         public void ClickLogin()
         {
             this.submitButton.Click();
+        }
+
+        public string GetEmailMessage()
+        {
+            return this.emailMessage.Text;
+        }
+
+        public string GetPassWordMessage()
+        {
+            return this.passwordMessage.Text;
         }
     }
 }

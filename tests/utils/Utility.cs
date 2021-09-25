@@ -1,5 +1,4 @@
 using System;
-using Xunit;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 
@@ -20,6 +19,7 @@ namespace tests.utils
             options.UseChromium = true;
 
             var driver = new EdgeDriver(WebDriverPath, options);
+            driver.Manage().Window.Maximize();
             return driver;
         }
     }

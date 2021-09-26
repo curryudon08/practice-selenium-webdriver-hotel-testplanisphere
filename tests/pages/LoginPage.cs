@@ -7,13 +7,13 @@ namespace tests.pages
     public class LoginPage : Page
     {
         [FindsBy(How = How.Id, Using = "email")]
-        private readonly IWebElement emailTextArea;
+        private readonly IWebElement emailForm;
 
         [FindsBy(How = How.Id, Using = "password")]
-        private readonly IWebElement passwordTextArea;
+        private readonly IWebElement passwordForm;
 
         [FindsBy(How = How.Id, Using = "login-button")]
-        private readonly IWebElement submitButton;
+        private readonly IWebElement loginButton;
 
         [FindsBy(How = How.Id, Using = "email-message")]
         private readonly IWebElement emailMessage;
@@ -41,19 +41,19 @@ namespace tests.pages
 
         public void TypeEmail(string email)
         {
-            this.emailTextArea.Clear();
-            this.emailTextArea.SendKeys(email);
+            this.emailForm.Clear();
+            this.emailForm.SendKeys(email);
         }
 
         public void TypePassword(string password)
         {
-            this.passwordTextArea.Clear();
-            this.passwordTextArea.SendKeys(password);
+            this.passwordForm.Clear();
+            this.passwordForm.SendKeys(password);
         }
 
         public void ClickLogin()
         {
-            this.submitButton.Click();
+            this.loginButton.Click();
         }
 
         public string GetEmailMessage()

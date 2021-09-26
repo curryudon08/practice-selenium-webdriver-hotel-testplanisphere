@@ -15,7 +15,7 @@ namespace tests.pages
         private readonly IWebElement reserveLink;
 
         [FindsBy(How = How.LinkText, Using = "会員登録")]
-        private readonly IWebElement signinLink;
+        private readonly IWebElement signupLink;
 
         [FindsBy(How = How.LinkText, Using = "ログイン")]
         private readonly IWebElement loginLink;

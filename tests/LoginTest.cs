@@ -26,26 +26,27 @@ namespace tests
             this.driver.Quit();
         }
 
-        [Fact(DisplayName = "登録済みのユーザーでログインできること")]
-        public void TestLoginSuccess()
+        [Theory(DisplayName = "登録済みのユーザーでログインできること")]
+        [CsvData("../../../../testdata/logintest1.csv")]
+        public void TestLoginSuccess(string email, string password)
         {
             var toppage = new TopPage(this.driver);
             var loginpage = toppage.GoLoginPage();
-            var myPage = loginpage.DoLogin("ichiro@example.com", "password");
+            var myPage = loginpage.DoLogin(email, password);
             Assert.Equal("マイページ", myPage.GetHeaderText()) ;
         }
 
-        [Fact(DisplayName = "未登録のユーザーでログインできないこと")]
-        public void TestLoginFailUnregister()
+        [Theory(DisplayName = "未登録のユーザーでログインできないこと")]
+        [CsvData("../../../../testdata/logintest2.csv")]
+        public void TestLoginFailUnregister(string email, string password)
         {
             var toppage = new TopPage(this.driver);
             var loginpage = toppage.GoLoginPage();
-            loginpage.TypeEmail("hogehoge@example.com");
-            loginpage.TypePassword("hogehoge");
+            loginpage.TypeEmail(email);
+            loginpage.TypePassword(password);
             loginpage.ClickLogin();
-            var t1 = "メールアドレスまたはパスワードが違います。".Equals(loginpage.GetEmailMessage());
-            var t2 = "メールアドレスまたはパスワードが違います。".Equals(loginpage.GetPassWordMessage());
-            Assert.True(t1 && t2);
+            Assert.Equal("メールアドレスまたはパスワードが違います。", loginpage.GetEmailMessage());
+            Assert.Equal("メールアドレスまたはパスワードが違います。", loginpage.GetPassWordMessage());
         }
 
         [Fact(DisplayName = "未入力でログインできないこと")]
@@ -56,9 +57,8 @@ namespace tests
             loginpage.TypeEmail("");
             loginpage.TypePassword("");
             loginpage.ClickLogin();
-            var t1 = "このフィールドを入力してください。".Equals(loginpage.GetEmailMessage());
-            var t2 = "このフィールドを入力してください。".Equals(loginpage.GetPassWordMessage());
-            Assert.True(t1 && t2);
+            Assert.Equal("このフィールドを入力してください。", loginpage.GetEmailMessage());
+            Assert.Equal("このフィールドを入力してください。", loginpage.GetPassWordMessage());
         }
     }
 }

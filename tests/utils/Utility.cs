@@ -6,7 +6,7 @@ namespace tests.utils
 {
     public class Utility
     {
-        private static readonly string WebDriverPath = "D:\\tool\\edgedriver_win64";
+        private static readonly string EdgeWebDriverPath = "D:\\edgedriver_win64";
 
         private Utility()
         {
@@ -18,7 +18,7 @@ namespace tests.utils
             var options = new EdgeOptions();
             options.UseChromium = true;
 
-            var driver = new EdgeDriver(WebDriverPath, options);
+            var driver = new EdgeDriver(Utility.EdgeWebDriverPath, options);
             driver.Manage().Window.Maximize();
             return driver;
         }

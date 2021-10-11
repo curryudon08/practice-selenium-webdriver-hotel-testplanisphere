@@ -9,6 +9,30 @@ namespace tests.pages
         [FindsBy(How = How.TagName, Using = "h2")]
         private readonly IWebElement headerText;
 
+        [FindsBy(How = How.Id, Using = "email")]
+        private readonly IWebElement email;
+
+        [FindsBy(How = How.Id, Using = "username")]
+        private readonly IWebElement username;
+
+        [FindsBy(How = How.Id, Using = "rank")]
+        private readonly IWebElement rank;
+
+        [FindsBy(How = How.Id, Using = "address")]
+        private readonly IWebElement address;
+
+        [FindsBy(How = How.Id, Using = "tel")]
+        private readonly IWebElement tel;
+
+        [FindsBy(How = How.Id, Using = "gender")]
+        private readonly IWebElement gender;
+
+        [FindsBy(How = How.Id, Using = "birthday")]
+        private readonly IWebElement birthday;
+
+        [FindsBy(How = How.Id, Using = "notification")]
+        private readonly IWebElement notification;
+
         public MyPage(WebDriver driver) : base(driver)
         {
             PageFactory.InitElements(this.driver,this);
@@ -22,6 +46,46 @@ namespace tests.pages
         public String GetHeaderText()
         {
             return this.headerText.Text;
+        }
+
+        public String GetEmailAddress()
+        {
+            return this.email.Text;
+        }
+
+        public String GetUserName()
+        {
+            return this.username.Text;
+        }
+
+        public String GetRank()
+        {
+            return this.rank.Text;
+        }
+
+        public String GetAddress()
+        {
+            return this.address.Text;
+        }
+
+        public String GetTelephoneNumber()
+        {
+            return this.tel.Text;
+        }
+
+        public String GetGender()
+        {
+            return this.gender.Text;
+        }
+
+        public String GetBirthday()
+        {
+            return this.birthday.Text;
+        }
+
+        public String GetNotification()
+        {
+            return this.notification.Text;
         }
     }
 }

@@ -26,24 +26,22 @@ namespace tests
             this.driver.Quit();
         }
 
-        [Theory(DisplayName = "登録済みのユーザーでログインできること")]
-        [CsvData("../../../../testdata/logintest1.csv")]
-        public void TestLoginSuccess(string email, string password)
+        [Fact(DisplayName = "登録済みのユーザーでログインできること")]
+        public void TestLoginSuccess()
         {
             var toppage = new TopPage(this.driver);
             var loginpage = toppage.GoLoginPage();
-            var myPage = loginpage.DoLogin(email, password);
+            var myPage = loginpage.DoLogin("ichiro@example.com", "password");
             Assert.Equal("マイページ", myPage.GetHeaderText()) ;
         }
 
-        [Theory(DisplayName = "未登録のユーザーでログインできないこと")]
-        [CsvData("../../../../testdata/logintest2.csv")]
-        public void TestLoginFailUnregister(string email, string password)
+        [Fact(DisplayName = "未登録のユーザーでログインできないこと")]
+        public void TestLoginFailUnregister()
         {
             var toppage = new TopPage(this.driver);
             var loginpage = toppage.GoLoginPage();
-            loginpage.TypeEmail(email);
-            loginpage.TypePassword(password);
+            loginpage.TypeEmail("ichiro@example.com");
+            loginpage.TypePassword("password");
             loginpage.ClickLogin();
             Assert.Equal("メールアドレスまたはパスワードが違います。", loginpage.GetEmailMessage());
             Assert.Equal("メールアドレスまたはパスワードが違います。", loginpage.GetPassWordMessage());

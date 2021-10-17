@@ -8,18 +8,6 @@ namespace tests.pages
     {
         public static readonly string BaseURL = "https://hotel.testplanisphere.dev/ja/";
 
-        [FindsBy(How = How.LinkText, Using = "ホーム")]
-        private readonly IWebElement homeLink;
-
-        [FindsBy(How = How.LinkText, Using = "宿泊予約")]
-        private readonly IWebElement reserveLink;
-
-        [FindsBy(How = How.LinkText, Using = "会員登録")]
-        private readonly IWebElement signupLink;
-
-        [FindsBy(How = How.LinkText, Using = "ログイン")]
-        private readonly IWebElement loginLink;
-
         public TopPage(WebDriver driver) : base(driver)
         {
             PageFactory.InitElements(this.driver,this);

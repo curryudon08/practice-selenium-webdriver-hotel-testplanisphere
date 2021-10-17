@@ -33,6 +33,12 @@ namespace tests.pages
         [FindsBy(How = How.Id, Using = "notification")]
         private readonly IWebElement notification;
 
+        [FindsBy(How = How.Id, Using = "icon-link")]
+        private readonly IWebElement iconButton;
+
+        [FindsBy(How = How.Id, Using = "delete-form")]
+        private readonly IWebElement deleteButton;
+
         public MyPage(WebDriver driver) : base(driver)
         {
             PageFactory.InitElements(this.driver,this);
@@ -86,6 +92,16 @@ namespace tests.pages
         public String GetNotification()
         {
             return this.notification.Text;
+        }
+
+        public bool IsEnabledIconButon()
+        {
+            return this.iconButton. Enabled;
+        }
+
+        public bool IsEnabledDeleteButon()
+        {
+            return this.deleteButton.Enabled;
         }
     }
 }

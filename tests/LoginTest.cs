@@ -40,8 +40,8 @@ namespace tests
         {
             var toppage = new TopPage(this.driver);
             var loginpage = toppage.GoLoginPage();
-            loginpage.TypeEmail("ichiro@example.com");
-            loginpage.TypePassword("password");
+            loginpage.TypeEmail("hogehoge@example.com");
+            loginpage.TypePassword("hogehoge");
             loginpage.ClickLogin();
             Assert.Equal("メールアドレスまたはパスワードが違います。", loginpage.GetEmailMessage());
             Assert.Equal("メールアドレスまたはパスワードが違います。", loginpage.GetPassWordMessage());

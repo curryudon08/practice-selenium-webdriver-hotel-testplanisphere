@@ -23,5 +23,11 @@ namespace tests.pages
             this.loginLink.Click();
             return new LoginPage(this.driver);
         }
+
+        public SignupPage GoSignupPage()
+        {
+            this.signupLink.Click();
+            return new SignupPage(this.driver);
+        }
     }
 }

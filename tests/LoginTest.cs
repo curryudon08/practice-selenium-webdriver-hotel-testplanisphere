@@ -26,7 +26,7 @@ namespace tests
             this.driver.Quit();
         }
 
-        [Fact(DisplayName = "登録済みのユーザーでログインできること")]
+        [Fact(DisplayName = "登録済みのユーザーでログインできること", Skip="スキップ")]
         public void TestLoginSuccess()
         {
             var toppage = new TopPage(this.driver);
@@ -35,7 +35,7 @@ namespace tests
             Assert.Equal("マイページ", myPage.GetHeaderText()) ;
         }
 
-        [Fact(DisplayName = "未登録のユーザーでログインできないこと")]
+        [Fact(DisplayName = "未登録のユーザーでログインできないこと", Skip="スキップ")]
         public void TestLoginFailUnregister()
         {
             var toppage = new TopPage(this.driver);
@@ -47,7 +47,7 @@ namespace tests
             Assert.Equal("メールアドレスまたはパスワードが違います。", loginpage.GetPassWordMessage());
         }
 
-        [Fact(DisplayName = "未入力でログインできないこと")]
+        [Fact(DisplayName = "未入力でログインできないこと", Skip="スキップ")]
         public void TestLoginFailBlank()
         {
             var toppage = new TopPage(this.driver);

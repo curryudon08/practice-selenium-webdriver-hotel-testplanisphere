@@ -26,7 +26,7 @@ namespace tests
             this.driver.Quit();
         }
 
-        [Fact(DisplayName = "登録済みユーザーの情報が表示されること")]
+        [Fact(DisplayName = "登録済みユーザーの情報が表示されること", Skip="スキップ")]
         public void TestExistsUserPattern1()
         {
             var toppage = new TopPage(this.driver);
@@ -43,7 +43,7 @@ namespace tests
             Assert.Equal("受け取る", myPage.GetNotification()) ;
         }
 
-        [Fact(DisplayName = "登録済みユーザーの情報が表示されること")]
+        [Fact(DisplayName = "登録済みユーザーの情報が表示されること", Skip="スキップ")]
         public void estExistsUserPattern2()
         {
             var toppage = new TopPage(this.driver);
@@ -60,7 +60,7 @@ namespace tests
             Assert.Equal("受け取らない", myPage.GetNotification()) ;
         }
 
-        [Fact(DisplayName = "登録済みユーザーの情報が表示されること")]
+        [Fact(DisplayName = "登録済みユーザーの情報が表示されること", Skip="スキップ")]
         public void estExistsUserPattern3()
         {
             var toppage = new TopPage(this.driver);
@@ -77,7 +77,7 @@ namespace tests
             Assert.Equal("受け取らない", myPage.GetNotification()) ;
         }
 
-        [Fact(DisplayName = "登録済みユーザーの情報が表示されること")]
+        [Fact(DisplayName = "登録済みユーザーの情報が表示されること", Skip="スキップ")]
         public void estExistsUserPattern4()
         {
             var toppage = new TopPage(this.driver);
